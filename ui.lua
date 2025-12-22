@@ -1795,6 +1795,7 @@ function MacLib:Window(Settings)
 						if callback then
 							callback(togglebool)
 						end
+                        MacLib:AutoSave()
 					end
 
 					NewState(togglebool)
@@ -1812,7 +1813,6 @@ function MacLib:Window(Settings)
 					function ToggleFunctions:UpdateState(State)
 						togglebool = State
 						NewState(togglebool, ToggleFunctions.Settings.Callback)
-                        MacLib:AutoSave()
 					end
 					function ToggleFunctions:GetState()
 						return togglebool
@@ -1822,6 +1822,7 @@ function MacLib:Window(Settings)
 					end
 					function ToggleFunctions:SetVisibility(State)
 						toggle.Visible = State
+                        
 					end
 
 					if Flag then
