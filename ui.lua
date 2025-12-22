@@ -1774,7 +1774,7 @@ function MacLib:Window(Settings)
 
 					local togglebool = ToggleFunctions.Settings.Default
 
-					local function NewState(State, callback)
+					local function NewState(State, callback, skipAutoSave)
 						local transparencyValues = State and {toggle1Transparency.Enabled, togglerHeadTransparency.Enabled}
 							or {toggle1Transparency.Disabled, togglerHeadTransparency.Disabled}
 						local position = State and TweenSettings.EnabledPosition or TweenSettings.DisabledPosition
@@ -1793,15 +1793,20 @@ function MacLib:Window(Settings)
 
 						ToggleFunctions.State = State
 						if callback then
-							callback(togglebool)
+							callback(State)
+						end
+						if not skipAutoSave then
+							task.spawn(function()
+								MacLib:AutoSave()
+							end)
 						end
 					end
 
-					NewState(togglebool)
+					NewState(togglebool, nil, true)
 
 					local function Toggle()
 						togglebool = not togglebool
-						NewState(togglebool, ToggleFunctions.Settings.Callback)
+						NewState(togglebool, ToggleFunctions.Settings.Callback, false)
 					end
 
 					toggle1.MouseButton1Click:Connect(Toggle)
@@ -1809,9 +1814,9 @@ function MacLib:Window(Settings)
 					function ToggleFunctions:Toggle()
 						Toggle()
 					end
-					function ToggleFunctions:UpdateState(State)
+					function ToggleFunctions:UpdateState(State, skipAutoSave)
 						togglebool = State
-						NewState(togglebool, ToggleFunctions.Settings.Callback)
+						NewState(togglebool, ToggleFunctions.Settings.Callback, skipAutoSave)
 					end
 					function ToggleFunctions:GetState()
 						return togglebool
@@ -5407,14 +5412,14 @@ function MacLib:Window(Settings)
 		["Toggle"] = {
 			Save = function(Flag, data)
 				return {
-					type = "Toggle", 
-					flag = Flag, 
+					type = "Toggle",
+					flag = Flag,
 					state = data.State or false
 				}
 			end,
 			Load = function(Flag, data)
-				if MacLib.Options[Flag] and data.state then
-					MacLib.Options[Flag]:UpdateState(data.state)
+				if MacLib.Options[Flag] then
+					MacLib.Options[Flag]:UpdateState(data.state, true)
 				end
 			end
 		},
