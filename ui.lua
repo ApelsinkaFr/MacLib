@@ -649,6 +649,105 @@ function MacLib:Window(Settings)
 	content.Size = UDim2.new(0, (base.AbsoluteSize.X - sidebar.AbsoluteSize.X), 1, 0)
 
 	local resizingContent = false
+        -- Resize handle (добавьте после создания content)
+    local resizeHandle = Instance.new("ImageButton")
+    resizeHandle.Name = "ResizeHandle"
+    resizeHandle.Image = ""
+    resizeHandle.AnchorPoint = Vector2.new(1, 1)
+    resizeHandle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    resizeHandle.BackgroundTransparency = 1
+    resizeHandle.BorderSizePixel = 0
+    resizeHandle.Position = UDim2.fromScale(1, 1)
+    resizeHandle.Size = UDim2.fromOffset(20, 20)
+    resizeHandle.ZIndex = 10
+    resizeHandle.Parent = base
+
+    -- Визуальный индикатор (опционально)
+    local resizeIcon = Instance.new("ImageLabel")
+    resizeIcon.Name = "ResizeIcon"
+    resizeIcon.Image = "rbxassetid://10747384394" -- иконка resize
+    resizeIcon.ImageTransparency = 0.7
+    resizeIcon.AnchorPoint = Vector2.new(0.5, 0.5)
+    resizeIcon.BackgroundTransparency = 1
+    resizeIcon.Position = UDim2.fromScale(0.5, 0.5)
+    resizeIcon.Size = UDim2.fromOffset(12, 12)
+    resizeIcon.Parent = resizeHandle
+
+    -- Resize functionality
+    local resizing = false
+    local resizeStart
+    local initialSize
+    local minSize = Vector2.new(400, 300)
+    local maxSize = Vector2.new(1200, 800)
+
+    local function updateContentSize()
+        content.Size = UDim2.new(0, base.AbsoluteSize.X - sidebar.AbsoluteSize.X, 1, 0)
+    end
+
+    local function ChangeResizeHandleState(State)
+        if State == "Hover" then
+            Tween(resizeIcon, TweenInfo.new(0.2, Enum.EasingStyle.Sine), {
+                ImageTransparency = 0.4
+            }):Play()
+        else
+            Tween(resizeIcon, TweenInfo.new(0.2, Enum.EasingStyle.Sine), {
+                ImageTransparency = 0.7
+            }):Play()
+        end
+    end
+
+    resizeHandle.MouseEnter:Connect(function()
+        ChangeResizeHandleState("Hover")
+    end)
+
+    resizeHandle.MouseLeave:Connect(function()
+        if not resizing then
+            ChangeResizeHandleState("Default")
+        end
+    end)
+
+    resizeHandle.MouseButton1Down:Connect(function()
+        resizing = true
+        resizeStart = UserInputService:GetMouseLocation()
+        initialSize = base.AbsoluteSize
+        ChangeResizeHandleState("Hover")
+    end)
+
+    UserInputService.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            if resizing then
+                resizing = false
+                ChangeResizeHandleState("Default")
+            end
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if resizing and input.UserInputType == Enum.UserInputType.MouseMovement then
+            local currentMouse = UserInputService:GetMouseLocation()
+            local delta = currentMouse - resizeStart
+            
+            -- Вычисляем новый размер с учетом масштаба
+            local scale = baseUIScale.Scale
+            local newWidth = math.clamp(
+                initialSize.X + (delta.X / scale),
+                minSize.X,
+                maxSize.X
+            )
+            local newHeight = math.clamp(
+                initialSize.Y + (delta.Y / scale),
+                minSize.Y,
+                maxSize.Y
+            )
+            
+            base.Size = UDim2.fromOffset(newWidth, newHeight)
+            updateContentSize()
+        end
+    end)
+
+    -- Обновляем размер content при изменении размера sidebar
+    sidebar:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateContentSize)
+
 	local defaultSidebarWidth = sidebar.AbsoluteSize.X
 	local initialMouseX, initialSidebarWidth
 	local snapRange = 20
@@ -5391,6 +5490,19 @@ function MacLib:Window(Settings)
 	function WindowFunctions:GetScale()
 		return baseUIScale.Scale
 	end
+
+    function WindowFunctions:SetResizeLimits(MinSize, MaxSize)
+        if MinSize then
+            minSize = MinSize
+        end
+        if MaxSize then
+            maxSize = MaxSize
+        end
+    end
+
+    function WindowFunctions:GetResizeLimits()
+        return minSize, maxSize
+    end
 
 	local ClassParser = {
 		["Toggle"] = {
