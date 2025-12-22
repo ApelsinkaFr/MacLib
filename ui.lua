@@ -105,7 +105,7 @@ function MacLib:Window(Settings)
 	base.Name = "Base"
 	base.AnchorPoint = Vector2.new(0.5, 0.5)
 	base.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	base.BackgroundTransparency = Settings.AcrylicBlur and 0.05 or 0
+	base.BackgroundTransparency = Settings.AcrylicBlur and 0.05 or 0.3
 	base.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	base.BorderSizePixel = 0
 	base.Position = UDim2.fromScale(0.5, 0.5)
@@ -1530,7 +1530,7 @@ function MacLib:Window(Settings)
 
 			local leftUIListLayout = Instance.new("UIListLayout")
 			leftUIListLayout.Name = "LeftUIListLayout"
-			leftUIListLayout.Padding = UDim.new(0, 10)
+			leftUIListLayout.Padding = UDim.new(0, 15)
 			leftUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			leftUIListLayout.Parent = left
 
@@ -1549,7 +1549,7 @@ function MacLib:Window(Settings)
 
 			local rightUIListLayout = Instance.new("UIListLayout")
 			rightUIListLayout.Name = "RightUIListLayout"
-			rightUIListLayout.Padding = UDim.new(0, 10)
+			rightUIListLayout.Padding = UDim.new(0, 15)
 			rightUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			rightUIListLayout.Parent = right
 
@@ -5356,7 +5356,7 @@ function MacLib:Window(Settings)
 
 	function WindowFunctions:SetAcrylicBlurState(State)
 		acrylicBlur = State
-		base.BackgroundTransparency = State and 0.05 or 0
+		base.BackgroundTransparency = State and 0.05 or 0.3
 	end
 
 	function WindowFunctions:GetAcrylicBlurState()
