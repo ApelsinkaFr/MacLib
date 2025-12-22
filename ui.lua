@@ -1399,7 +1399,7 @@ function MacLib:Window(Settings)
 			tabSwitcher.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			tabSwitcher.BorderSizePixel = 0
 			tabSwitcher.Position = UDim2.fromScale(0.5, 0)
-			tabSwitcher.Size = UDim2.new(1, -21, 0, 30)
+			tabSwitcher.Size = UDim2.new(1, -21, 0, 45)
 
 			tabIndex += 1
 			tabSwitcher.LayoutOrder = tabIndex
@@ -1434,7 +1434,7 @@ function MacLib:Window(Settings)
 				tabImage.BackgroundTransparency = 1
 				tabImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				tabImage.BorderSizePixel = 0
-				tabImage.Size = UDim2.fromOffset(18, 18)
+				tabImage.Size = UDim2.fromOffset(22, 22)
 				tabImage.Parent = tabSwitcher
 			end
 
@@ -1448,7 +1448,7 @@ function MacLib:Window(Settings)
 			tabSwitcherName.Text = Settings.Name
 			tabSwitcherName.RichText = true
 			tabSwitcherName.TextColor3 = Color3.fromRGB(255, 255, 255)
-			tabSwitcherName.TextSize = 16
+			tabSwitcherName.TextSize = 18
 			tabSwitcherName.TextTransparency = 0.5
 			tabSwitcherName.TextTruncate = Enum.TextTruncate.SplitWord
 			tabSwitcherName.TextXAlignment = Enum.TextXAlignment.Left
