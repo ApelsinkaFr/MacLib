@@ -1986,7 +1986,7 @@ function MacLib:Window(Settings)
 					local ValueDisplayMethod = DisplayMethods[SliderFunctions.Settings.DisplayMethod] or DisplayMethods.Value
 					local finalValue
 
-					local function SetValue(val, ignorecallback)
+					local function SetValue(val, ignorecallback, skipAutoSave)
 						local posXScale
 
 						if typeof(val) == "Instance" then
@@ -2009,7 +2009,9 @@ function MacLib:Window(Settings)
 								if SliderFunctions.Settings.Callback then
 									SliderFunctions.Settings.Callback(finalValue)
 								end
-								MacLib:AutoSave()
+								if not skipAutoSave then
+									MacLib:AutoSave()
+								end
 							end)
 						end
 
@@ -2084,8 +2086,8 @@ function MacLib:Window(Settings)
 					function SliderFunctions:SetVisibility(State)
 						slider.Visible = State
 					end
-					function SliderFunctions:UpdateValue(Value)
-						SetValue(tonumber(Value), true)
+					function SliderFunctions:UpdateValue(Value, skipAutoSave)
+						SetValue(tonumber(Value), true, skipAutoSave)
 					end
 					function SliderFunctions:GetValue()
 						return finalValue
@@ -2257,7 +2259,7 @@ function MacLib:Window(Settings)
 					function InputFunctions:UpdatePlaceholder(Placeholder)
 						inputBox.PlaceholderText = Placeholder
 					end
-					function InputFunctions:UpdateText(Text)
+					function InputFunctions:UpdateText(Text, skipAutoSave)
 						local filteredText = AcceptedCharacters(Text)
 						InputBox.Text = filteredText
 						InputFunctions.Text = filteredText
@@ -2265,7 +2267,9 @@ function MacLib:Window(Settings)
 							if InputFunctions.Settings.Callback then
 								InputFunctions.Settings.Callback(filteredText)
 							end
-							MacLib:AutoSave()
+							if not skipAutoSave then
+								MacLib:AutoSave()
+							end
 						end)
 					end
 
@@ -2407,7 +2411,6 @@ function MacLib:Window(Settings)
 								if KeybindFunctions.Settings.Callback then
 									KeybindFunctions.Settings.Callback(binded)
 								end
-								MacLib:AutoSave()
 								if KeybindFunctions.Settings.onBindHeld then
 									KeybindFunctions.Settings.onBindHeld(true, binded)
 								end
@@ -2921,7 +2924,7 @@ function MacLib:Window(Settings)
 					function DropdownFunctions:SetVisibility(State)
 						dropdown.Visible = State
 					end
-					function DropdownFunctions:UpdateSelection(newSelection)
+					function DropdownFunctions:UpdateSelection(newSelection, skipAutoSave)
 						if not newSelection then return end
 
 						for option, _ in pairs(OptionObjs) do
@@ -2966,7 +2969,9 @@ function MacLib:Window(Settings)
 								DropdownFunctions.Settings.Callback(selectedOptions[1] or nil)
 							end
 						end
-						MacLib:AutoSave()
+						if not skipAutoSave then
+							MacLib:AutoSave()
+						end
 					end
 					function DropdownFunctions:InsertOptions(newOptions)
 						if not newOptions then return end
@@ -4275,7 +4280,7 @@ function MacLib:Window(Settings)
 						colorpicker.Visible = State
 					end
 
-					function ColorpickerFunctions:SetColor(color3)
+					function ColorpickerFunctions:SetColor(color3, skipAutoSave)
 						ColorpickerFunctions.Color = color3
 						colorC.BackgroundColor3 = color3
 
@@ -4300,7 +4305,9 @@ function MacLib:Window(Settings)
 						if ColorpickerFunctions.Settings.Callback then
 							task.spawn(function()
 								ColorpickerFunctions.Settings.Callback(ColorpickerFunctions.Color, isAlpha and ColorpickerFunctions.Alpha)
-								MacLib:AutoSave()
+								if not skipAutoSave then
+									MacLib:AutoSave()
+								end
 							end)
 						end
 					end
@@ -5433,7 +5440,7 @@ function MacLib:Window(Settings)
 			end,
 			Load = function(Flag, data)
 				if MacLib.Options[Flag] and data.value then
-					MacLib.Options[Flag]:UpdateValue(data.value)
+					MacLib.Options[Flag]:UpdateValue(data.value, true)
 				end
 			end
 		},
@@ -5447,7 +5454,7 @@ function MacLib:Window(Settings)
 			end,
 			Load = function(Flag, data)
 				if MacLib.Options[Flag] and data.text and type(data.text) == "string" then
-					MacLib.Options[Flag]:UpdateText(data.text)
+					MacLib.Options[Flag]:UpdateText(data.text, true)
 				end
 			end
 		},
@@ -5475,7 +5482,7 @@ function MacLib:Window(Settings)
 			end,
 			Load = function(Flag, data)
 				if MacLib.Options[Flag] and data.value then
-					MacLib.Options[Flag]:UpdateSelection(data.value)
+					MacLib.Options[Flag]:UpdateSelection(data.value, true)
 				end
 			end
 		},
@@ -5501,7 +5508,7 @@ function MacLib:Window(Settings)
 				end
 
 				if MacLib.Options[Flag] and data.color then
-					MacLib.Options[Flag]:SetColor(HexToColor3(data.color)) 
+					MacLib.Options[Flag]:SetColor(HexToColor3(data.color), true)
 					if data.alpha then
 						MacLib.Options[Flag]:SetAlpha(data.alpha)
 					end
