@@ -1867,7 +1867,7 @@ function MacLib:Window(Settings)
 
 					local sliderUIListLayout = Instance.new("UIListLayout")
 					sliderUIListLayout.Name = "SliderUIListLayout"
-					sliderUIListLayout.Padding = UDim.new(0, 3)
+					sliderUIListLayout.Padding = UDim.new(0, 1)
 					sliderUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 					sliderUIListLayout.Parent = slider
 
