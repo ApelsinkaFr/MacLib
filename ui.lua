@@ -1584,7 +1584,7 @@ function MacLib:Window(Settings)
 
 				local sectionUIListLayout = Instance.new("UIListLayout")
 				sectionUIListLayout.Name = "SectionUIListLayout"
-				sectionUIListLayout.Padding = UDim.new(0, 6)
+				sectionUIListLayout.Padding = UDim.new(0, 10)
 				sectionUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 				sectionUIListLayout.Parent = section
 
@@ -1844,8 +1844,14 @@ function MacLib:Window(Settings)
 					slider.BackgroundTransparency = 1
 					slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					slider.BorderSizePixel = 0
-					slider.Size = UDim2.new(1, 0, 0, 28)
+					slider.Size = UDim2.new(1, 0, 0, 45)
 					slider.Parent = section
+
+					local sliderUIListLayout = Instance.new("UIListLayout")
+					sliderUIListLayout.Name = "SliderUIListLayout"
+					sliderUIListLayout.Padding = UDim.new(0, 8)
+					sliderUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+					sliderUIListLayout.Parent = slider
 
 					local sliderName = Instance.new("TextLabel")
 					sliderName.Name = "SliderName"
@@ -1858,24 +1864,23 @@ function MacLib:Window(Settings)
 					sliderName.TextTruncate = Enum.TextTruncate.AtEnd
 					sliderName.TextXAlignment = Enum.TextXAlignment.Left
 					sliderName.TextYAlignment = Enum.TextYAlignment.Top
-					sliderName.AnchorPoint = Vector2.new(0, 0.5)
-					sliderName.AutomaticSize = Enum.AutomaticSize.XY
+					sliderName.AutomaticSize = Enum.AutomaticSize.Y
 					sliderName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					sliderName.BackgroundTransparency = 1
 					sliderName.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderName.BorderSizePixel = 0
-					sliderName.Position = UDim2.fromScale(1.3e-07, 0.5)
+					sliderName.Size = UDim2.fromScale(1, 0)
+					sliderName.LayoutOrder = 0
 					sliderName.Parent = slider
 
 					local sliderElements = Instance.new("Frame")
 					sliderElements.Name = "SliderElements"
-					sliderElements.AnchorPoint = Vector2.new(1, 0)
 					sliderElements.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					sliderElements.BackgroundTransparency = 1
 					sliderElements.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderElements.BorderSizePixel = 0
-					sliderElements.Position = UDim2.fromScale(1, 0)
-					sliderElements.Size = UDim2.fromScale(1, 1)
+					sliderElements.Size = UDim2.new(1, 0, 0, 21)
+					sliderElements.LayoutOrder = 1
 
 					local sliderValue = Instance.new("TextBox")
 					sliderValue.Name = "SliderValue"
@@ -1888,7 +1893,7 @@ function MacLib:Window(Settings)
 					sliderValue.BackgroundTransparency = 0.95
 					sliderValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderValue.BorderSizePixel = 0
-					sliderValue.LayoutOrder = 1
+					sliderValue.LayoutOrder = 2
 					sliderValue.Position = UDim2.fromScale(-0.0789, 0.171)
 					sliderValue.Size = UDim2.fromOffset(41, 21)
 					sliderValue.ClipsDescendants = true
@@ -1915,9 +1920,9 @@ function MacLib:Window(Settings)
 
 					local sliderElementsUIListLayout = Instance.new("UIListLayout")
 					sliderElementsUIListLayout.Name = "SliderElementsUIListLayout"
-					sliderElementsUIListLayout.Padding = UDim.new(0, 12)
+					sliderElementsUIListLayout.Padding = UDim.new(0, 8)
 					sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Horizontal
-					sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+					sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
 					sliderElementsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 					sliderElementsUIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 					sliderElementsUIListLayout.Parent = sliderElements
@@ -1930,8 +1935,8 @@ function MacLib:Window(Settings)
 					sliderBar.BackgroundTransparency = 1
 					sliderBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderBar.BorderSizePixel = 0
-					sliderBar.Position = UDim2.fromScale(0.219, 0.457)
-					sliderBar.Size = UDim2.fromOffset(123, 3)
+					sliderBar.LayoutOrder = 1
+					sliderBar.Size = UDim2.new(1, -50, 0, 3)
 
 					local sliderHead = Instance.new("ImageButton")
 					sliderHead.Name = "SliderHead"
@@ -2065,20 +2070,7 @@ function MacLib:Window(Settings)
 						end
 					end)
 
-					local function updateSliderBarSize()
-						local padding = sliderElementsUIListLayout.Padding.Offset
-						local sliderValueWidth = sliderValue.AbsoluteSize.X
-						local sliderNameWidth = sliderName.AbsoluteSize.X
-						local totalWidth = sliderElements.AbsoluteSize.X
-
-						local newBarWidth = (totalWidth - (padding + sliderValueWidth + sliderNameWidth + 20)) / baseUIScale.Scale
-						sliderBar.Size = UDim2.new(sliderBar.Size.X.Scale, newBarWidth, sliderBar.Size.Y.Scale, sliderBar.Size.Y.Offset)
-					end
-
-					updateSliderBarSize()
-
-					sliderName:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateSliderBarSize)
-					section:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateSliderBarSize)
+					sliderElements.Parent = slider
 
 					function SliderFunctions:UpdateName(Name)
 						sliderName = Name
@@ -5689,7 +5681,7 @@ function MacLib:Demo()
 		DisabledWindowControls = {},
 		ShowUserInfo = true,
 		Keybind = Enum.KeyCode.RightControl,
-		AcrylicBlur = true,
+		AcrylicBlur = false,
 	})
 
 	local globalSettings = {
@@ -5933,6 +5925,25 @@ function MacLib:Demo()
 	})
 
 	MacLib:SetFolder("ApelHub")
+
+	local settingsSection = tabs.Settings:Section({ Side = "Left" })
+
+	settingsSection:Header({
+		Text = "UI Settings"
+	})
+
+	settingsSection:Slider({
+		Name = "UI Size",
+		Default = 1,
+		Minimum = 0.5,
+		Maximum = 2,
+		DisplayMethod = "Value",
+		Precision = 2,
+		Callback = function(Value)
+			Window:SetScale(Value)
+		end
+	}, "UISize")
+
 	tabs.Settings:InsertConfigSection("Left")
 
 	Window.onUnloaded(function()
