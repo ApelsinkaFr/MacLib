@@ -2496,6 +2496,7 @@ function MacLib:Window(Settings)
 					dropdownName.TextTransparency = 0.5
 					dropdownName.TextTruncate = Enum.TextTruncate.SplitWord
 					dropdownName.TextXAlignment = Enum.TextXAlignment.Left
+					dropdownName.TextYAlignment = Enum.TextYAlignment.Center
 					dropdownName.AutomaticSize = Enum.AutomaticSize.Y
 					dropdownName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					dropdownName.BackgroundTransparency = 1
