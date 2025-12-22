@@ -5592,29 +5592,23 @@ function MacLib:Window(Settings)
 
 	function MacLib:AutoSave()
 		if isStudio or not (writefile and isfile and readfile) then return end
-        print("[MacLib] Initiating autosave...")
-		-- Check if autoload config exists
+
 		local autoloadPath = MacLib.Folder .. "/settings/autoload.txt"
 		if not isfile(autoloadPath) then
-			-- Create default autoload config
 			if not isfolder(MacLib.Folder .. "/settings") then
 				makefolder(MacLib.Folder .. "/settings")
 			end
 			writefile(autoloadPath, "default")
-			print("[MacLib] Created autoload config with default name")
 		end
-        print("[MacLib] Autosave triggered.")
-		-- Get autoload config name
+
 		local configName = readfile(autoloadPath)
 		if not configName or configName == "" then
 			configName = "default"
 			writefile(autoloadPath, configName)
 		end
-        print("[MacLib] Autosaving config: " .. configName)
-		-- Save to autoload config
+
 		task.spawn(function()
 			MacLib:SaveConfig(configName)
-            print("[MacLib] Autosave complete.")
 		end)
 	end
 
