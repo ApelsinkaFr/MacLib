@@ -1897,7 +1897,7 @@ function MacLib:Window(Settings)
 
 					local sliderNameUIPadding = Instance.new("UIPadding")
 					sliderNameUIPadding.Name = "SliderNameUIPadding"
-					sliderNameUIPadding.PaddingLeft = UDim.new(0, 1)
+					sliderNameUIPadding.PaddingLeft = UDim.new(0, 3)
 					sliderNameUIPadding.Parent = sliderName
 
 					local sliderElements = Instance.new("Frame")
@@ -1920,7 +1920,7 @@ function MacLib:Window(Settings)
 					sliderValue.BackgroundTransparency = 0.95
 					sliderValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderValue.BorderSizePixel = 0
-					sliderValue.LayoutOrder = 2
+					sliderValue.LayoutOrder = 2 
 					sliderValue.Position = UDim2.fromScale(-0.0789, 0.171)
 					sliderValue.Size = UDim2.fromOffset(41, 21)
 					sliderValue.ClipsDescendants = true
