@@ -1613,7 +1613,7 @@ function MacLib:Window(Settings)
 					buttonInteract.FontFace = Font.new(assets.interFont)
 					buttonInteract.RichText = true
 					buttonInteract.TextColor3 = Color3.fromRGB(255, 255, 255)
-					buttonInteract.TextSize = 13
+					buttonInteract.TextSize = 15
 					buttonInteract.TextTransparency = 0.5
 					buttonInteract.TextTruncate = Enum.TextTruncate.AtEnd
 					buttonInteract.TextXAlignment = Enum.TextXAlignment.Left
@@ -1708,7 +1708,7 @@ function MacLib:Window(Settings)
 					toggleName.Text = ToggleFunctions.Settings.Name
 					toggleName.RichText = true
 					toggleName.TextColor3 = Color3.fromRGB(255, 255, 255)
-					toggleName.TextSize = 13
+					toggleName.TextSize = 15
 					toggleName.TextTransparency = 0.5
 					toggleName.TextTruncate = Enum.TextTruncate.AtEnd
 					toggleName.TextXAlignment = Enum.TextXAlignment.Left
@@ -1859,7 +1859,7 @@ function MacLib:Window(Settings)
 					sliderName.Text = SliderFunctions.Settings.Name
 					sliderName.RichText = true
 					sliderName.TextColor3 = Color3.fromRGB(255, 255, 255)
-					sliderName.TextSize = 13
+					sliderName.TextSize = 15
 					sliderName.TextTransparency = 0.5
 					sliderName.TextTruncate = Enum.TextTruncate.AtEnd
 					sliderName.TextXAlignment = Enum.TextXAlignment.Left
@@ -1886,7 +1886,7 @@ function MacLib:Window(Settings)
 					sliderValue.Name = "SliderValue"
 					sliderValue.FontFace = Font.new(assets.interFont)
 					sliderValue.TextColor3 = Color3.fromRGB(255, 255, 255)
-					sliderValue.TextSize = 12
+					sliderValue.TextSize = 14
 					sliderValue.TextTransparency = 0.1
 					--sliderValue.TextTruncate = Enum.TextTruncate.AtEnd
 					sliderValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2110,7 +2110,7 @@ function MacLib:Window(Settings)
 					inputName.Text = InputFunctions.Settings.Name
 					inputName.RichText = true
 					inputName.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName.TextSize = 13
+					inputName.TextSize = 15
 					inputName.TextTransparency = 0.5
 					inputName.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName.TextXAlignment = Enum.TextXAlignment.Left
@@ -2129,7 +2129,7 @@ function MacLib:Window(Settings)
 					inputBox.FontFace = Font.new(assets.interFont)
 					inputBox.Text = "Hello world!"
 					inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox.TextSize = 12
+					inputBox.TextSize = 14
 					inputBox.TextTransparency = 0.1
 					inputBox.AnchorPoint = Vector2.new(1, 0.5)
 					inputBox.AutomaticSize = Enum.AutomaticSize.X
@@ -2492,7 +2492,7 @@ function MacLib:Window(Settings)
 					dropdownName.Text = Settings.Default and (DropdownFunctions.Settings.Name .. " • " .. table.concat(Selected, ", ")) or (DropdownFunctions.Settings.Name .. "...")
 					dropdownName.RichText = true
 					dropdownName.TextColor3 = Color3.fromRGB(255, 255, 255)
-					dropdownName.TextSize = 13
+					dropdownName.TextSize = 15
 					dropdownName.TextTransparency = 0.5
 					dropdownName.TextTruncate = Enum.TextTruncate.SplitWord
 					dropdownName.TextXAlignment = Enum.TextXAlignment.Left
@@ -3316,7 +3316,7 @@ function MacLib:Window(Settings)
 					inputName.FontFace = Font.new(assets.interFont)
 					inputName.Text = "Red"
 					inputName.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName.TextSize = 13
+					inputName.TextSize = 15
 					inputName.TextTransparency = 0.5
 					inputName.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName.TextXAlignment = Enum.TextXAlignment.Left
@@ -3346,7 +3346,7 @@ function MacLib:Window(Settings)
 					inputBox.FontFace = Font.new(assets.interFont)
 					inputBox.Text = "255"
 					inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox.TextSize = 12
+					inputBox.TextSize = 14
 					inputBox.TextTransparency = 0.1
 					inputBox.TextXAlignment = Enum.TextXAlignment.Left
 					inputBox.AnchorPoint = Vector2.new(1, 0.5)
@@ -3400,7 +3400,7 @@ function MacLib:Window(Settings)
 					inputName1.FontFace = Font.new(assets.interFont)
 					inputName1.Text = "Green"
 					inputName1.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName1.TextSize = 13
+					inputName1.TextSize = 15
 					inputName1.TextTransparency = 0.5
 					inputName1.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName1.TextXAlignment = Enum.TextXAlignment.Left
@@ -3429,7 +3429,7 @@ function MacLib:Window(Settings)
 					inputBox1.FontFace = Font.new(assets.interFont)
 					inputBox1.Text = "255"
 					inputBox1.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox1.TextSize = 12
+					inputBox1.TextSize = 14
 					inputBox1.TextTransparency = 0.1
 					inputBox1.TextXAlignment = Enum.TextXAlignment.Left
 					inputBox1.AnchorPoint = Vector2.new(1, 0.5)
@@ -3483,7 +3483,7 @@ function MacLib:Window(Settings)
 					inputName2.FontFace = Font.new(assets.interFont)
 					inputName2.Text = "Blue"
 					inputName2.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName2.TextSize = 13
+					inputName2.TextSize = 15
 					inputName2.TextTransparency = 0.5
 					inputName2.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName2.TextXAlignment = Enum.TextXAlignment.Left
@@ -3512,7 +3512,7 @@ function MacLib:Window(Settings)
 					inputBox2.FontFace = Font.new(assets.interFont)
 					inputBox2.Text = "255"
 					inputBox2.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox2.TextSize = 12
+					inputBox2.TextSize = 14
 					inputBox2.TextTransparency = 0.1
 					inputBox2.TextXAlignment = Enum.TextXAlignment.Left
 					inputBox2.AnchorPoint = Vector2.new(1, 0.5)
@@ -3567,7 +3567,7 @@ function MacLib:Window(Settings)
 					inputName3.FontFace = Font.new(assets.interFont)
 					inputName3.Text = "Alpha"
 					inputName3.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName3.TextSize = 13
+					inputName3.TextSize = 15
 					inputName3.TextTransparency = 0.5
 					inputName3.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName3.TextXAlignment = Enum.TextXAlignment.Left
@@ -3596,7 +3596,7 @@ function MacLib:Window(Settings)
 					inputBox3.FontFace = Font.new(assets.interFont)
 					inputBox3.Text = "0"
 					inputBox3.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox3.TextSize = 12
+					inputBox3.TextSize = 14
 					inputBox3.TextTransparency = 0.1
 					inputBox3.TextXAlignment = Enum.TextXAlignment.Left
 					inputBox3.AnchorPoint = Vector2.new(1, 0.5)
@@ -3649,7 +3649,7 @@ function MacLib:Window(Settings)
 					inputName4.FontFace = Font.new(assets.interFont)
 					inputName4.Text = "Hex"
 					inputName4.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputName4.TextSize = 13
+					inputName4.TextSize = 15
 					inputName4.TextTransparency = 0.5
 					inputName4.TextTruncate = Enum.TextTruncate.AtEnd
 					inputName4.TextXAlignment = Enum.TextXAlignment.Left
@@ -3679,7 +3679,7 @@ function MacLib:Window(Settings)
 					inputBox4.FontFace = Font.new(assets.interFont)
 					inputBox4.Text = "255"
 					inputBox4.TextColor3 = Color3.fromRGB(255, 255, 255)
-					inputBox4.TextSize = 12
+					inputBox4.TextSize = 14
 					inputBox4.TextTransparency = 0.1
 					inputBox4.TextXAlignment = Enum.TextXAlignment.Left
 					inputBox4.AnchorPoint = Vector2.new(1, 0.5)
