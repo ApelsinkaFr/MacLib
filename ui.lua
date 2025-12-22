@@ -1322,6 +1322,7 @@ function MacLib:Window(Settings)
 				if Settings.Callback then
 					Settings.Callback(toggled)
 				end
+				MacLib:AutoSave()
 			end)
 		end)
 
@@ -2002,6 +2003,7 @@ function MacLib:Window(Settings)
 								if SliderFunctions.Settings.Callback then
 									SliderFunctions.Settings.Callback(finalValue)
 								end
+								MacLib:AutoSave()
 							end)
 						end
 
@@ -2223,6 +2225,7 @@ function MacLib:Window(Settings)
 							if InputFunctions.Settings.Callback then
 								InputFunctions.Settings.Callback(filteredText)
 							end
+							MacLib:AutoSave()
 						end)
 					end)
 					InputBox.Text = InputFunctions.Settings.Default or ""
@@ -2256,6 +2259,7 @@ function MacLib:Window(Settings)
 							if InputFunctions.Settings.Callback then
 								InputFunctions.Settings.Callback(filteredText)
 							end
+							MacLib:AutoSave()
 						end)
 					end
 
@@ -2397,6 +2401,7 @@ function MacLib:Window(Settings)
 								if KeybindFunctions.Settings.Callback then
 									KeybindFunctions.Settings.Callback(binded)
 								end
+								MacLib:AutoSave()
 								if KeybindFunctions.Settings.onBindHeld then
 									KeybindFunctions.Settings.onBindHeld(true, binded)
 								end
@@ -2882,11 +2887,13 @@ function MacLib:Window(Settings)
 									if DropdownFunctions.Settings.Callback then
 										DropdownFunctions.Settings.Callback(Return)
 									end
+									MacLib:AutoSave()
 
 								else
 									if newSelected and DropdownFunctions.Settings.Callback then
 										DropdownFunctions.Settings.Callback(Selected[1] or nil)
 									end
+									MacLib:AutoSave()
 								end
 							end)
 						end)
@@ -2953,6 +2960,7 @@ function MacLib:Window(Settings)
 								DropdownFunctions.Settings.Callback(selectedOptions[1] or nil)
 							end
 						end
+						MacLib:AutoSave()
 					end
 					function DropdownFunctions:InsertOptions(newOptions)
 						if not newOptions then return end
@@ -4247,6 +4255,7 @@ function MacLib:Window(Settings)
 						if ColorpickerFunctions.Settings.Callback then
 							task.spawn(function()
 								ColorpickerFunctions.Settings.Callback(ColorpickerFunctions.Color, isAlpha and ColorpickerFunctions.Alpha)
+								MacLib:AutoSave()
 							end)
 						end
 					end)
@@ -4285,6 +4294,7 @@ function MacLib:Window(Settings)
 						if ColorpickerFunctions.Settings.Callback then
 							task.spawn(function()
 								ColorpickerFunctions.Settings.Callback(ColorpickerFunctions.Color, isAlpha and ColorpickerFunctions.Alpha)
+								MacLib:AutoSave()
 							end)
 						end
 					end
@@ -5565,6 +5575,23 @@ function MacLib:Window(Settings)
 
 		writefile(fullPath, encoded)
 		return true
+	end
+
+	function MacLib:AutoSave()
+		if isStudio or not (writefile and isfile and readfile) then return end
+
+		-- Check if autoload config exists
+		local autoloadPath = MacLib.Folder .. "/settings/autoload.txt"
+		if not isfile(autoloadPath) then return end
+
+		-- Get autoload config name
+		local configName = readfile(autoloadPath)
+		if not configName or configName == "" then return end
+
+		-- Save to autoload config
+		task.spawn(function()
+			MacLib:SaveConfig(configName)
+		end)
 	end
 
 	function MacLib:LoadConfig(Path)
