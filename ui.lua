@@ -2502,6 +2502,8 @@ function MacLib:Window(Settings)
 					dropdownName.BackgroundTransparency = 1
 					dropdownName.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					dropdownName.BorderSizePixel = 0
+					dropdownName.AnchorPoint = Vector2.new(0, 0.5)
+					dropdownName.Position = UDim2.fromScale(0, 0.5)
 					dropdownName.Size = UDim2.new(1, -20, 0, 28)
 					dropdownName.Parent = dropdown
 
