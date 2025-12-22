@@ -1605,7 +1605,7 @@ function MacLib:Window(Settings)
 					button.BackgroundTransparency = 1
 					button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					button.BorderSizePixel = 0
-					button.Size = UDim2.new(1, 0, 0, 38)
+					button.Size = UDim2.new(1, 0, 0, 28)
 					button.Parent = section
 
 					local buttonInteract = Instance.new("TextButton")
@@ -1699,7 +1699,7 @@ function MacLib:Window(Settings)
 					toggle.BackgroundTransparency = 1
 					toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					toggle.BorderSizePixel = 0
-					toggle.Size = UDim2.new(1, 0, 0, 38)
+					toggle.Size = UDim2.new(1, 0, 0, 28)
 					toggle.Parent = section
 
 					local toggleName = Instance.new("TextLabel")
@@ -1844,7 +1844,7 @@ function MacLib:Window(Settings)
 					slider.BackgroundTransparency = 1
 					slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					slider.BorderSizePixel = 0
-					slider.Size = UDim2.new(1, 0, 0, 38)
+					slider.Size = UDim2.new(1, 0, 0, 28)
 					slider.Parent = section
 
 					local sliderName = Instance.new("TextLabel")
@@ -2108,7 +2108,7 @@ function MacLib:Window(Settings)
 					input.BackgroundTransparency = 1
 					input.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					input.BorderSizePixel = 0
-					input.Size = UDim2.new(1, 0, 0, 38)
+					input.Size = UDim2.new(1, 0, 0, 28)
 					input.Parent = section
 
 					local inputName = Instance.new("TextLabel")
@@ -2288,7 +2288,7 @@ function MacLib:Window(Settings)
 					keybind.BackgroundTransparency = 1
 					keybind.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					keybind.BorderSizePixel = 0
-					keybind.Size = UDim2.new(1, 0, 0, 38)
+					keybind.Size = UDim2.new(1, 0, 0, 28)
 					keybind.Parent = section
 
 					local keybindName = Instance.new("TextLabel")
@@ -2470,7 +2470,7 @@ function MacLib:Window(Settings)
 					dropdown.BackgroundTransparency = 0.985
 					dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					dropdown.BorderSizePixel = 0
-					dropdown.Size = UDim2.new(1, 0, 0, 38)
+					dropdown.Size = UDim2.new(1, 0, 0, 28)
 					dropdown.Parent = section
 					dropdown.ClipsDescendants = true
 
@@ -2490,7 +2490,7 @@ function MacLib:Window(Settings)
 					interact.BackgroundTransparency = 1
 					interact.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					interact.BorderSizePixel = 0
-					interact.Size = UDim2.new(1, 0, 0, 38)
+					interact.Size = UDim2.new(1, 0, 0, 28)
 					interact.Parent = dropdown
 
 					local dropdownName = Instance.new("TextLabel")
@@ -2508,7 +2508,7 @@ function MacLib:Window(Settings)
 					dropdownName.BackgroundTransparency = 1
 					dropdownName.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					dropdownName.BorderSizePixel = 0
-					dropdownName.Size = UDim2.new(1, -20, 0, 38)
+					dropdownName.Size = UDim2.new(1, -20, 0, 28)
 					dropdownName.Parent = dropdown
 
 					local dropdownUIStroke = Instance.new("UIStroke")
@@ -3050,7 +3050,7 @@ function MacLib:Window(Settings)
 					colorpicker.BackgroundTransparency = 1
 					colorpicker.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					colorpicker.BorderSizePixel = 0
-					colorpicker.Size = UDim2.new(1, 0, 0, 38)
+					colorpicker.Size = UDim2.new(1, 0, 0, 28)
 					colorpicker.Parent = section
 
 					local colorpickerName = Instance.new("TextLabel")
@@ -4388,7 +4388,7 @@ function MacLib:Window(Settings)
 					label.BackgroundTransparency = 1
 					label.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					label.BorderSizePixel = 0
-					label.Size = UDim2.new(1, 0, 0, 38)
+					label.Size = UDim2.new(1, 0, 0, 28)
 					label.Parent = section
 
 					local labelText = Instance.new("TextLabel")
@@ -4476,7 +4476,7 @@ function MacLib:Window(Settings)
 					paragraph.BackgroundTransparency = 1
 					paragraph.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					paragraph.BorderSizePixel = 0
-					paragraph.Size = UDim2.new(1, 0, 0, 38)
+					paragraph.Size = UDim2.new(1, 0, 0, 28)
 					paragraph.Parent = section
 
 					local paragraphHeader = Instance.new("TextLabel")
@@ -5099,7 +5099,7 @@ function MacLib:Window(Settings)
 		paragraph.BackgroundTransparency = 1
 		paragraph.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		paragraph.BorderSizePixel = 0
-		paragraph.Size = UDim2.new(1, 0, 0, 38)
+		paragraph.Size = UDim2.new(1, 0, 0, 28)
 
 		local paragraphHeader = Instance.new("TextLabel")
 		paragraphHeader.Name = "ParagraphHeader"
