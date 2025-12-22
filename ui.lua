@@ -1795,7 +1795,6 @@ function MacLib:Window(Settings)
 						if callback then
 							callback(togglebool)
 						end
-                        MacLib:AutoSave()
 					end
 
 					NewState(togglebool)
