@@ -709,7 +709,7 @@ function MacLib:Window(Settings)
 	topbar.BackgroundTransparency = 1
 	topbar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	topbar.BorderSizePixel = 0
-	topbar.Size = UDim2.new(1, 0, 0, 63)
+	topbar.Size = UDim2.new(1, 0, 0, 50)
 
 	local divider4 = Instance.new("Frame")
 	divider4.Name = "Divider"
@@ -732,8 +732,8 @@ function MacLib:Window(Settings)
 
 	local uIPadding2 = Instance.new("UIPadding")
 	uIPadding2.Name = "UIPadding"
-	uIPadding2.PaddingLeft = UDim.new(0, 20)
-	uIPadding2.PaddingRight = UDim.new(0, 20)
+	uIPadding2.PaddingLeft = UDim.new(0, 12)
+	uIPadding2.PaddingRight = UDim.new(0, 12)
 	uIPadding2.Parent = elements
 
 	local moveIcon = Instance.new("ImageButton")
@@ -1477,8 +1477,8 @@ function MacLib:Window(Settings)
 			elements1.BackgroundTransparency = 1
 			elements1.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			elements1.BorderSizePixel = 0
-			elements1.Position = UDim2.fromOffset(0, 63)
-			elements1.Size = UDim2.new(1, 0, 1, -63)
+			elements1.Position = UDim2.fromOffset(0, 50)
+			elements1.Size = UDim2.new(1, 0, 1, -50)
 			elements1.ClipsDescendants = true
 
 			local elementsUIPadding = Instance.new("UIPadding")
@@ -1506,14 +1506,14 @@ function MacLib:Window(Settings)
 			local elementsScrollingUIPadding = Instance.new("UIPadding")
 			elementsScrollingUIPadding.Name = "ElementsScrollingUIPadding"
 			elementsScrollingUIPadding.PaddingBottom = UDim.new(0, 5)
-			elementsScrollingUIPadding.PaddingLeft = UDim.new(0, 11)
+			elementsScrollingUIPadding.PaddingLeft = UDim.new(0, 8)
 			elementsScrollingUIPadding.PaddingRight = UDim.new(0, 3)
 			elementsScrollingUIPadding.PaddingTop = UDim.new(0, 5)
 			elementsScrollingUIPadding.Parent = elementsScrolling
 
 			local elementsScrollingUIListLayout = Instance.new("UIListLayout")
 			elementsScrollingUIListLayout.Name = "ElementsScrollingUIListLayout"
-			elementsScrollingUIListLayout.Padding = UDim.new(0, 15)
+			elementsScrollingUIListLayout.Padding = UDim.new(0, 10)
 			elementsScrollingUIListLayout.FillDirection = Enum.FillDirection.Horizontal
 			elementsScrollingUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			elementsScrollingUIListLayout.Parent = elementsScrolling
@@ -1590,10 +1590,10 @@ function MacLib:Window(Settings)
 
 				local sectionUIPadding = Instance.new("UIPadding")
 				sectionUIPadding.Name = "SectionUIPadding"
-				sectionUIPadding.PaddingBottom = UDim.new(0, 20)
-				sectionUIPadding.PaddingLeft = UDim.new(0, 20)
-				sectionUIPadding.PaddingRight = UDim.new(0, 18)
-				sectionUIPadding.PaddingTop = UDim.new(0, 22)
+				sectionUIPadding.PaddingBottom = UDim.new(0, 15)
+				sectionUIPadding.PaddingLeft = UDim.new(0, 14)
+				sectionUIPadding.PaddingRight = UDim.new(0, 12)
+				sectionUIPadding.PaddingTop = UDim.new(0, 16)
 				sectionUIPadding.Parent = section
 
 				function SectionFunctions:Button(Settings, Flag)
@@ -1915,7 +1915,7 @@ function MacLib:Window(Settings)
 
 					local sliderElementsUIListLayout = Instance.new("UIListLayout")
 					sliderElementsUIListLayout.Name = "SliderElementsUIListLayout"
-					sliderElementsUIListLayout.Padding = UDim.new(0, 20)
+					sliderElementsUIListLayout.Padding = UDim.new(0, 12)
 					sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Horizontal
 					sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 					sliderElementsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
