@@ -314,7 +314,7 @@ function MacLib:Window(Settings)
 	information.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	information.BorderSizePixel = 0
 	information.Position = UDim2.fromOffset(0, 31)
-	information.Size = UDim2.new(1, 0, 0, 60)
+	information.Size = UDim2.new(1, 0, 0, 45)
 
 	local divider2 = Instance.new("Frame")
 	divider2.Name = "Divider"
@@ -337,10 +337,10 @@ function MacLib:Window(Settings)
 
 	local informationHolderUIPadding = Instance.new("UIPadding")
 	informationHolderUIPadding.Name = "InformationHolderUIPadding"
-	informationHolderUIPadding.PaddingBottom = UDim.new(0, 10)
+	informationHolderUIPadding.PaddingBottom = UDim.new(0, 8)
 	informationHolderUIPadding.PaddingLeft = UDim.new(0, 23)
 	informationHolderUIPadding.PaddingRight = UDim.new(0, 22)
-	informationHolderUIPadding.PaddingTop = UDim.new(0, 10)
+	informationHolderUIPadding.PaddingTop = UDim.new(0, 8)
 	informationHolderUIPadding.Parent = informationHolder
 
 	local globalSettingsButton = Instance.new("ImageButton")
@@ -450,8 +450,8 @@ function MacLib:Window(Settings)
 	sidebarGroup.BackgroundTransparency = 1
 	sidebarGroup.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	sidebarGroup.BorderSizePixel = 0
-	sidebarGroup.Position = UDim2.fromOffset(0, 91)
-	sidebarGroup.Size = UDim2.new(1, 0, 1, -91)
+	sidebarGroup.Position = UDim2.fromOffset(0, 76)
+	sidebarGroup.Size = UDim2.new(1, 0, 1, -76)
 
 	local userInfo = Instance.new("Frame")
 	userInfo.Name = "UserInfo"
@@ -461,7 +461,7 @@ function MacLib:Window(Settings)
 	userInfo.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	userInfo.BorderSizePixel = 0
 	userInfo.Position = UDim2.fromScale(0, 1)
-	userInfo.Size = UDim2.new(1, 0, 0, 107)
+	userInfo.Size = UDim2.new(1, 0, 0, 80)
 
 	local informationGroup = Instance.new("Frame")
 	informationGroup.Name = "InformationGroup"
@@ -473,7 +473,7 @@ function MacLib:Window(Settings)
 
 	local informationGroupUIPadding = Instance.new("UIPadding")
 	informationGroupUIPadding.Name = "InformationGroupUIPadding"
-	informationGroupUIPadding.PaddingBottom = UDim.new(0, 17)
+	informationGroupUIPadding.PaddingBottom = UDim.new(0, 12)
 	informationGroupUIPadding.PaddingLeft = UDim.new(0, 25)
 	informationGroupUIPadding.Parent = informationGroup
 
@@ -1399,7 +1399,7 @@ function MacLib:Window(Settings)
 			tabSwitcher.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			tabSwitcher.BorderSizePixel = 0
 			tabSwitcher.Position = UDim2.fromScale(0.5, 0)
-			tabSwitcher.Size = UDim2.new(1, -21, 0, 40)
+			tabSwitcher.Size = UDim2.new(1, -21, 0, 30)
 
 			tabIndex += 1
 			tabSwitcher.LayoutOrder = tabIndex
@@ -1464,8 +1464,8 @@ function MacLib:Window(Settings)
 
 			local tabSwitcherUIPadding = Instance.new("UIPadding")
 			tabSwitcherUIPadding.Name = "TabSwitcherUIPadding"
-			tabSwitcherUIPadding.PaddingLeft = UDim.new(0, 24)
-			tabSwitcherUIPadding.PaddingRight = UDim.new(0, 35)
+			tabSwitcherUIPadding.PaddingLeft = UDim.new(0, 18)
+			tabSwitcherUIPadding.PaddingRight = UDim.new(0, 25)
 			tabSwitcherUIPadding.PaddingTop = UDim.new(0, 1)
 			tabSwitcherUIPadding.Parent = tabSwitcher
 
