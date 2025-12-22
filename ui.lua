@@ -1,6 +1,6 @@
 local MacLib = { 
 	Options = {}, 
-	Folder = "Maclib", 
+	Folder = "ApelHub", 
 	GetService = function(service)
 		return cloneref and cloneref(game:GetService(service)) or game:GetService(service)
 	end
@@ -5914,7 +5914,7 @@ function MacLib:Demo()
 		Text = "Sub-Label. Lorem ipsum odor amet, consectetuer adipiscing elit."
 	})
 
-	MacLib:SetFolder("Maclib")
+	MacLib:SetFolder("ApelHub")
 	tabs.Settings:InsertConfigSection("Left")
 
 	Window.onUnloaded(function()
