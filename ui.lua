@@ -1610,7 +1610,11 @@ function MacLib:Window(Settings)
 
 					local buttonInteract = Instance.new("TextButton")
 					buttonInteract.Name = "ButtonInteract"
-					buttonInteract.FontFace = Font.new(assets.interFont)
+					buttonInteract.FontFace = Font.new(
+						assets.interFont,
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
 					buttonInteract.RichText = true
 					buttonInteract.TextColor3 = Color3.fromRGB(255, 255, 255)
 					buttonInteract.TextSize = 13
@@ -1624,6 +1628,11 @@ function MacLib:Window(Settings)
 					buttonInteract.Size = UDim2.fromScale(1, 1)
 					buttonInteract.Parent = button
 					buttonInteract.Text = ButtonFunctions.Settings.Name
+
+					local buttonInteractUIPadding = Instance.new("UIPadding")
+					buttonInteractUIPadding.Name = "ButtonInteractUIPadding"
+					buttonInteractUIPadding.PaddingLeft = UDim.new(0, 3)
+					buttonInteractUIPadding.Parent = buttonInteract
 
 					local buttonImage = Instance.new("ImageLabel")
 					buttonImage.Name = "ButtonImage"
@@ -1704,7 +1713,11 @@ function MacLib:Window(Settings)
 
 					local toggleName = Instance.new("TextLabel")
 					toggleName.Name = "ToggleName"
-					toggleName.FontFace = Font.new(assets.interFont)
+					toggleName.FontFace = Font.new(
+						assets.interFont,
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
 					toggleName.Text = ToggleFunctions.Settings.Name
 					toggleName.RichText = true
 					toggleName.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1722,6 +1735,11 @@ function MacLib:Window(Settings)
 					toggleName.Position = UDim2.fromScale(0, 0.5)
 					toggleName.Size = UDim2.new(1, -50, 0, 0)
 					toggleName.Parent = toggle
+
+					local toggleNameUIPadding = Instance.new("UIPadding")
+					toggleNameUIPadding.Name = "ToggleNameUIPadding"
+					toggleNameUIPadding.PaddingLeft = UDim.new(0, 3)
+					toggleNameUIPadding.Parent = toggleName
 
 					local toggle1 = Instance.new("ImageButton")
 					toggle1.Name = "Toggle"
@@ -1855,7 +1873,11 @@ function MacLib:Window(Settings)
 
 					local sliderName = Instance.new("TextLabel")
 					sliderName.Name = "SliderName"
-					sliderName.FontFace = Font.new(assets.interFont)
+					sliderName.FontFace = Font.new(
+						assets.interFont,
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
 					sliderName.Text = SliderFunctions.Settings.Name
 					sliderName.RichText = true
 					sliderName.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1872,6 +1894,11 @@ function MacLib:Window(Settings)
 					sliderName.Size = UDim2.fromScale(1, 0)
 					sliderName.LayoutOrder = 0
 					sliderName.Parent = slider
+
+					local sliderNameUIPadding = Instance.new("UIPadding")
+					sliderNameUIPadding.Name = "SliderNameUIPadding"
+					sliderNameUIPadding.PaddingLeft = UDim.new(0, 3)
+					sliderNameUIPadding.Parent = sliderName
 
 					local sliderElements = Instance.new("Frame")
 					sliderElements.Name = "SliderElements"
@@ -2106,7 +2133,11 @@ function MacLib:Window(Settings)
 
 					local inputName = Instance.new("TextLabel")
 					inputName.Name = "InputName"
-					inputName.FontFace = Font.new(assets.interFont)
+					inputName.FontFace = Font.new(
+						assets.interFont,
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
 					inputName.Text = InputFunctions.Settings.Name
 					inputName.RichText = true
 					inputName.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -2123,6 +2154,11 @@ function MacLib:Window(Settings)
 					inputName.BorderSizePixel = 0
 					inputName.Position = UDim2.fromScale(0, 0.5)
 					inputName.Parent = input
+
+					local inputNameUIPadding = Instance.new("UIPadding")
+					inputNameUIPadding.Name = "InputNameUIPadding"
+					inputNameUIPadding.PaddingLeft = UDim.new(0, 3)
+					inputNameUIPadding.Parent = inputName
 
 					local inputBox = Instance.new("TextBox")
 					inputBox.Name = "InputBox"
@@ -2286,7 +2322,11 @@ function MacLib:Window(Settings)
 
 					local keybindName = Instance.new("TextLabel")
 					keybindName.Name = "KeybindName"
-					keybindName.FontFace = Font.new(assets.interFont)
+					keybindName.FontFace = Font.new(
+						assets.interFont,
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
 					keybindName.Text = KeybindFunctions.Settings.Name
 					keybindName.RichText = true
 					keybindName.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -2303,6 +2343,11 @@ function MacLib:Window(Settings)
 					keybindName.BorderSizePixel = 0
 					keybindName.Position = UDim2.fromScale(0, 0.5)
 					keybindName.Parent = keybind
+
+					local keybindNameUIPadding = Instance.new("UIPadding")
+					keybindNameUIPadding.Name = "KeybindNameUIPadding"
+					keybindNameUIPadding.PaddingLeft = UDim.new(0, 3)
+					keybindNameUIPadding.Parent = keybindName
 
 					local binderBox = Instance.new("TextBox")
 					binderBox.Name = "BinderBox"
@@ -2488,7 +2533,11 @@ function MacLib:Window(Settings)
 
 					local dropdownName = Instance.new("TextLabel")
 					dropdownName.Name = "DropdownName"
-					dropdownName.FontFace = Font.new(assets.interFont)
+					dropdownName.FontFace = Font.new(
+						assets.interFont,
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
 					dropdownName.Text = Settings.Default and (DropdownFunctions.Settings.Name .. " • " .. table.concat(Selected, ", ")) or (DropdownFunctions.Settings.Name .. "...")
 					dropdownName.RichText = true
 					dropdownName.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -2502,8 +2551,15 @@ function MacLib:Window(Settings)
 					dropdownName.BackgroundTransparency = 1
 					dropdownName.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					dropdownName.BorderSizePixel = 0
-					dropdownName.Size = UDim2.new(1, -20, 1, 0)
+					dropdownName.AnchorPoint = Vector2.new(0, 0.5)
+					dropdownName.Position = UDim2.fromScale(0, 0.5)
+					dropdownName.Size = UDim2.new(1, -20, 0, 28)
 					dropdownName.Parent = dropdown
+
+					local dropdownNameUIPadding = Instance.new("UIPadding")
+					dropdownNameUIPadding.Name = "DropdownNameUIPadding"
+					dropdownNameUIPadding.PaddingLeft = UDim.new(0, 3)
+					dropdownNameUIPadding.Parent = dropdownName
 
 					local dropdownUIStroke = Instance.new("UIStroke")
 					dropdownUIStroke.Name = "DropdownUIStroke"
@@ -3049,7 +3105,11 @@ function MacLib:Window(Settings)
 
 					local colorpickerName = Instance.new("TextLabel")
 					colorpickerName.Name = "KeybindName"
-					colorpickerName.FontFace = Font.new(assets.interFont)
+					colorpickerName.FontFace = Font.new(
+						assets.interFont,
+						Enum.FontWeight.SemiBold,
+						Enum.FontStyle.Normal
+					)
 					colorpickerName.Text = Settings.Name
 					colorpickerName.TextColor3 = Color3.fromRGB(255, 255, 255)
 					colorpickerName.TextSize = 13
@@ -3066,6 +3126,11 @@ function MacLib:Window(Settings)
 					colorpickerName.BorderSizePixel = 0
 					colorpickerName.Position = UDim2.fromScale(0, 0.5)
 					colorpickerName.Parent = colorpicker
+
+					local colorpickerNameUIPadding = Instance.new("UIPadding")
+					colorpickerNameUIPadding.Name = "ColorpickerNameUIPadding"
+					colorpickerNameUIPadding.PaddingLeft = UDim.new(0, 3)
+					colorpickerNameUIPadding.Parent = colorpickerName
 
 					local colorCbg = Instance.new("ImageLabel")
 					colorCbg.Name = "NewColor"
