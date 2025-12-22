@@ -2463,7 +2463,7 @@ function MacLib:Window(Settings)
 					dropdown.BackgroundTransparency = 0.985
 					dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					dropdown.BorderSizePixel = 0
-					dropdown.Size = UDim2.new(1, 0, 0, 30)
+					dropdown.Size = UDim2.new(1, 0, 0, 32)
 					dropdown.Parent = section
 					dropdown.ClipsDescendants = true
 
