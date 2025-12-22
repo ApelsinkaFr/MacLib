@@ -1812,6 +1812,7 @@ function MacLib:Window(Settings)
 					function ToggleFunctions:UpdateState(State)
 						togglebool = State
 						NewState(togglebool, ToggleFunctions.Settings.Callback)
+                        MacLib:AutoSave()
 					end
 					function ToggleFunctions:GetState()
 						return togglebool
