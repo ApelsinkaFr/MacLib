@@ -1584,7 +1584,7 @@ function MacLib:Window(Settings)
 
 				local sectionUIListLayout = Instance.new("UIListLayout")
 				sectionUIListLayout.Name = "SectionUIListLayout"
-				sectionUIListLayout.Padding = UDim.new(0, 10)
+				sectionUIListLayout.Padding = UDim.new(0, 15)
 				sectionUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 				sectionUIListLayout.Parent = section
 
@@ -2015,6 +2015,7 @@ function MacLib:Window(Settings)
 									SliderFunctions.Settings.Callback(finalValue)
 								end
 								if not skipAutoSave then
+                                    print("autosaving")
 									MacLib:AutoSave()
 								end
 							end)
