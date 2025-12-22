@@ -1399,7 +1399,7 @@ function MacLib:Window(Settings)
 			tabSwitcher.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			tabSwitcher.BorderSizePixel = 0
 			tabSwitcher.Position = UDim2.fromScale(0.5, 0)
-			tabSwitcher.Size = UDim2.new(1, -21, 0, 33)
+			tabSwitcher.Size = UDim2.new(1, -21, 0, 35)
 
 			tabIndex += 1
 			tabSwitcher.LayoutOrder = tabIndex
