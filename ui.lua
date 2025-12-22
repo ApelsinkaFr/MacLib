@@ -1584,7 +1584,7 @@ function MacLib:Window(Settings)
 
 				local sectionUIListLayout = Instance.new("UIListLayout")
 				sectionUIListLayout.Name = "SectionUIListLayout"
-				sectionUIListLayout.Padding = UDim.new(0, 12)
+				sectionUIListLayout.Padding = UDim.new(0, 10)
 				sectionUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 				sectionUIListLayout.Parent = section
 
