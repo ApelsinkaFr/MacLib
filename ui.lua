@@ -5752,6 +5752,127 @@ function MacLib:Window(Settings)
 		return out
 	end
 
+	function WindowFunctions:CreateMinimizer(Config)
+		Config = Config or {}
+
+		local minimizerGui = Instance.new("ScreenGui")
+		minimizerGui.Name = "MacLibMinimizer"
+		minimizerGui.ResetOnSpawn = false
+		minimizerGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		minimizerGui.DisplayOrder = 2147483647
+		minimizerGui.Parent = gethui()
+
+		local holder = Instance.new("Frame")
+		holder.Name = "MinimizerHolder"
+		holder.AnchorPoint = Vector2.new(1, 0.5)
+		holder.Size = Config.Size or UDim2.fromOffset(50, 50)
+		holder.Position = Config.Position or UDim2.new(1, -10, 0.5, 0)
+		holder.BackgroundTransparency = 1
+		holder.Parent = minimizerGui
+
+		local button = Instance.new("ImageButton")
+		button.Name = "MinimizerButton"
+		button.Size = UDim2.fromScale(1, 1)
+		button.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+		button.BackgroundTransparency = Settings.AcrylicBlur and 0.05 or 0.1
+		button.BorderSizePixel = 0
+		button.AutoButtonColor = false
+		button.Image = Config.Icon or assets.transform
+		button.ImageColor3 = Color3.fromRGB(255, 255, 255)
+		button.ImageTransparency = 0.3
+		button.Parent = holder
+
+		local buttonUICorner = Instance.new("UICorner")
+		buttonUICorner.CornerRadius = UDim.new(1, 0)
+		buttonUICorner.Parent = button
+
+		local buttonUIStroke = Instance.new("UIStroke")
+		buttonUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+		buttonUIStroke.Color = Color3.fromRGB(255, 255, 255)
+		buttonUIStroke.Transparency = 0.9
+		buttonUIStroke.Parent = button
+
+		local dragging = false
+		local dragStart
+		local startPos
+
+		button.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = true
+				dragStart = input.Position
+				startPos = holder.Position
+
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+					end
+				end)
+			end
+		end)
+
+		UserInputService.InputChanged:Connect(function(input)
+			if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+				local delta = input.Position - dragStart
+				local newY = startPos.Y.Offset + delta.Y
+
+				local viewportSize = workspace.CurrentCamera.ViewportSize
+				local buttonSize = holder.AbsoluteSize.Y
+
+				newY = math.clamp(newY, 0, viewportSize.Y - buttonSize)
+
+				holder.Position = UDim2.new(1, startPos.X.Offset, 0, newY)
+			end
+		end)
+
+		local function ChangeState(State)
+			if State == "Default" then
+				Tween(button, TweenInfo.new(0.2, Enum.EasingStyle.Sine), {
+					ImageTransparency = 0.3,
+					BackgroundTransparency = Settings.AcrylicBlur and 0.05 or 0.1
+				}):Play()
+			elseif State == "Hover" then
+				Tween(button, TweenInfo.new(0.2, Enum.EasingStyle.Sine), {
+					ImageTransparency = 0.1,
+					BackgroundTransparency = Settings.AcrylicBlur and 0.02 or 0.05
+				}):Play()
+			end
+		end
+
+		button.MouseEnter:Connect(function()
+			ChangeState("Hover")
+		end)
+
+		button.MouseLeave:Connect(function()
+			ChangeState("Default")
+		end)
+
+		button.MouseButton1Click:Connect(function()
+			if not dragging then
+				WindowFunctions:SetState(not WindowFunctions:GetState())
+			end
+		end)
+
+		local MinimizerFunctions = {}
+
+		function MinimizerFunctions:SetPosition(Position)
+			holder.Position = Position
+		end
+
+		function MinimizerFunctions:SetSize(Size)
+			holder.Size = Size
+		end
+
+		function MinimizerFunctions:SetVisibility(State)
+			minimizerGui.Enabled = State
+		end
+
+		function MinimizerFunctions:Destroy()
+			minimizerGui:Destroy()
+		end
+
+		return MinimizerFunctions
+	end
+
 	macLib.Enabled = false
 
 	local assetList = {}
