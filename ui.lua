@@ -1948,7 +1948,7 @@ function MacLib:Window(Settings)
 
 					local sliderElementsUIListLayout = Instance.new("UIListLayout")
 					sliderElementsUIListLayout.Name = "SliderElementsUIListLayout"
-					sliderElementsUIListLayout.Padding = UDim.new(0, 10)
+					sliderElementsUIListLayout.Padding = UDim.new(0, 20)
 					sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Horizontal
 					sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 					sliderElementsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -1964,7 +1964,7 @@ function MacLib:Window(Settings)
 					sliderBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderBar.BorderSizePixel = 0
 					sliderBar.LayoutOrder = 1
-					sliderBar.Size = UDim2.new(1, -60, 0, 3)
+					sliderBar.Size = UDim2.new(1, -70, 0, 3)
 
 					local sliderHead = Instance.new("ImageButton")
 					sliderHead.Name = "SliderHead"
