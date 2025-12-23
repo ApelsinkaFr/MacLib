@@ -1940,7 +1940,7 @@ function MacLib:Window(Settings)
 
 					local sliderValueUIPadding = Instance.new("UIPadding")
 					sliderValueUIPadding.Name = "SliderValueUIPadding"
-					sliderValueUIPadding.PaddingLeft = UDim.new(0, 2)
+					sliderValueUIPadding.PaddingLeft = UDim.new(0, 10)
 					sliderValueUIPadding.PaddingRight = UDim.new(0, 2)
 					sliderValueUIPadding.Parent = sliderValue
 
@@ -1965,6 +1965,12 @@ function MacLib:Window(Settings)
 					sliderBar.BorderSizePixel = 0
 					sliderBar.LayoutOrder = 1
 					sliderBar.Size = UDim2.new(1, -60, 0, 3)
+
+                    local sliderBarUIPadding = Instance.new("UIPadding")
+					sliderBarUIPadding.Name = "SliderBarUIPadding"
+					sliderBarUIPadding.PaddingLeft = UDim.new(0, 15)
+					sliderBarUIPadding.PaddingRight = UDim.new(0, 2)
+					sliderBarUIPadding.Parent = sliderBar
 
 					local sliderHead = Instance.new("ImageButton")
 					sliderHead.Name = "SliderHead"
