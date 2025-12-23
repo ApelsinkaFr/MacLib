@@ -1885,7 +1885,7 @@ function MacLib:Window(Settings)
 					sliderName.TextTransparency = 0.5
 					sliderName.TextTruncate = Enum.TextTruncate.AtEnd
 					sliderName.TextXAlignment = Enum.TextXAlignment.Left
-					sliderName.TextYAlignment = Enum.TextYAlignment.Center
+					sliderName.TextYAlignment = Enum.TextYAlignment.Left
 					sliderName.AutomaticSize = Enum.AutomaticSize.Y
 					sliderName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					sliderName.BackgroundTransparency = 1
