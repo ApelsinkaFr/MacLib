@@ -1964,7 +1964,7 @@ function MacLib:Window(Settings)
 					sliderBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderBar.BorderSizePixel = 0
 					sliderBar.LayoutOrder = 1
-					sliderBar.Size = UDim2.new(1, -60, 0, 3)
+					sliderBar.Size = UDim2.new(1, -75, 0, 3)
 
 					local sliderHead = Instance.new("ImageButton")
 					sliderHead.Name = "SliderHead"
