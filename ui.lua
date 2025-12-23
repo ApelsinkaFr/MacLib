@@ -1982,7 +1982,7 @@ function MacLib:Window(Settings)
 
 					local sliderElementsUIPadding = Instance.new("UIPadding")
 					sliderElementsUIPadding.Name = "SliderElementsUIPadding"
-					sliderElementsUIPadding.PaddingTop = UDim.new(0, 3)
+					sliderElementsUIPadding.PaddingTop = UDim.new(0, 10)
 					sliderElementsUIPadding.Parent = sliderElements
 
 					sliderElements.Parent = slider
