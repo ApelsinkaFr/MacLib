@@ -2108,7 +2108,7 @@ function MacLib:Window(Settings)
 						slider.Visible = State
 					end
 					function SliderFunctions:UpdateValue(Value, skipAutoSave)
-						SetValue(tonumber(Value), true, skipAutoSave)
+						SetValue(tonumber(Value), false, skipAutoSave)
 					end
 					function SliderFunctions:GetValue()
 						return finalValue
