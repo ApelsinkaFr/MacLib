@@ -1921,7 +1921,7 @@ function MacLib:Window(Settings)
 					sliderValue.BackgroundTransparency = 0.95
 					sliderValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderValue.BorderSizePixel = 0
-					sliderValue.LayoutOrder = 2 
+					sliderValue.LayoutOrder = 1
 					sliderValue.Position = UDim2.fromScale(-0.0789, 0.171)
 					sliderValue.Size = UDim2.fromOffset(41, 21)
 					sliderValue.ClipsDescendants = true
@@ -1950,7 +1950,7 @@ function MacLib:Window(Settings)
 					sliderElementsUIListLayout.Name = "SliderElementsUIListLayout"
 					sliderElementsUIListLayout.Padding = UDim.new(0, -1)
 					sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Horizontal
-					sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+					sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 					sliderElementsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 					sliderElementsUIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 					sliderElementsUIListLayout.Parent = sliderElements
@@ -1963,7 +1963,7 @@ function MacLib:Window(Settings)
 					sliderBar.BackgroundTransparency = 1
 					sliderBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					sliderBar.BorderSizePixel = 0
-					sliderBar.LayoutOrder = 1
+					sliderBar.LayoutOrder = 2
 					sliderBar.Size = UDim2.new(1, -60, 0, 3)
 
                     local sliderBarUIPadding = Instance.new("UIPadding")
