@@ -5830,7 +5830,7 @@ function MacLib:Window(Settings)
 				local buttonSizeY = holder.AbsoluteSize.Y
 
 				newX = math.clamp(newX, -viewportSize.X + buttonSizeX, 0)
-				newY = math.clamp(newY, -buttonSizeY / 2, viewportSize.Y - buttonSizeY / 2)
+				newY = math.clamp(newY, -viewportSize.Y + buttonSizeY, 0)
 
 				holder.Position = UDim2.new(startPos.X.Scale, newX, startPos.Y.Scale, newY)
 			end
