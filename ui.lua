@@ -4826,7 +4826,8 @@ function MacLib:Window(Settings)
 					Name = "Set as autoload",
 					Callback = function()
 						local name = configSelection.Value
-						writefile(MacLib.Folder .. "/settings/autoload.txt", name)
+						local gameFolder = GetGameFolder()
+						writefile(gameFolder .. "/autoload.txt", name)
 						autoloadLabel:UpdateName("Autoload config: " .. name)
 						WindowFunctions:Notify({
 							Title = "Interface",
@@ -4836,32 +4837,34 @@ function MacLib:Window(Settings)
 				})
 
                 configSection:Button({
-                    Name = "Remove autoload", 
+                    Name = "Remove autoload",
                     Callback = function()
-                        local path = MacLib.Folder .. "/settings/autoload.txt"
+                        local gameFolder = GetGameFolder()
+                        local path = gameFolder .. "/autoload.txt"
                         if(isfile(path)) then
                             local autoloadedConfig = readfile(path)
 
-                            task.wait(); 
+                            task.wait();
 
-                            delfile(path); 
+                            delfile(path);
                             WindowFunctions:Notify({
-                                Title = "Interface", 
+                                Title = "Interface",
                                 Description = "Autoload has been disabled"
                             })
-                        else 
+                        else
                             WindowFunctions:Notify({
-                                Title = "Interface", 
+                                Title = "Interface",
                                 Description = "Error! there is no autoload set!"
                             })
-                        end 
-                    end, 
+                        end
+                    end,
                 })
 
 				autoloadLabel = configSection:Label({Text = "Autoload config: None"})
 
-				if isfile(MacLib.Folder .. "/settings/autoload.txt") then
-					local name = readfile(MacLib.Folder .. "/settings/autoload.txt")
+				local gameFolder = GetGameFolder()
+				if isfile(gameFolder .. "/autoload.txt") then
+					local name = readfile(gameFolder .. "/autoload.txt")
 					autoloadLabel:UpdateName("Autoload config: " .. name)
 				end
 			end
@@ -5593,25 +5596,46 @@ function MacLib:Window(Settings)
 		end
 	end
 
+	local function GetGameFolder()
+		local gameId = tostring(game.PlaceId)
+		local gamePath = MacLib.Folder .. "/settings/" .. gameId
+
+		if not isfolder(gamePath) then
+			makefolder(gamePath)
+		end
+
+		return gamePath
+	end
+
 	function MacLib:LoadAutoLoadConfig()
 		if isStudio or not (isfile and readfile) then return "Config system unavailable." end
 
-		if isfile(MacLib.Folder .. "/settings/autoload.txt") then
-			local name = readfile(MacLib.Folder .. "/settings/autoload.txt")
+		local gameFolder = GetGameFolder()
+		local autoloadPath = gameFolder .. "/autoload.txt"
 
-			local suc, err = MacLib:LoadConfig(name)
-			if not suc then
-				WindowFunctions:Notify({
-					Title = "Interface",
-					Description = "Error loading autoload config: " .. err
-				})
-			end
+		if not isfile(autoloadPath) then
+			writefile(autoloadPath, "default")
+		end
 
+		local name = readfile(autoloadPath)
+		if not name or name == "" then
+			name = "default"
+			writefile(autoloadPath, name)
+		end
+
+		local suc, err = MacLib:LoadConfig(name)
+		if not suc then
 			WindowFunctions:Notify({
 				Title = "Interface",
-				Description = string.format("Autoloaded config: %q", name),
+				Description = "Error loading autoload config: " .. err
 			})
+			return
 		end
+
+		WindowFunctions:Notify({
+			Title = "Interface",
+			Description = string.format("Autoloaded config: %q", name),
+		})
 	end
 
 	function MacLib:SetFolder(Folder)
@@ -5628,7 +5652,8 @@ function MacLib:Window(Settings)
 			return false, "Please select a config file."
 		end
 
-		local fullPath = MacLib.Folder .. "/settings/" .. Path .. ".json"
+		local gameFolder = GetGameFolder()
+		local fullPath = gameFolder .. "/" .. Path .. ".json"
 
 		local data = {
 			objects = {}
@@ -5639,7 +5664,7 @@ function MacLib:Window(Settings)
 			if option.IgnoreConfig then continue end
 
 			table.insert(data.objects, ClassParser[option.Class].Save(flag, option))
-		end	
+		end
 
 		local success, encoded = pcall(HttpService.JSONEncode, HttpService, data)
 		if not success then
@@ -5653,11 +5678,10 @@ function MacLib:Window(Settings)
 	function MacLib:AutoSave()
 		if isStudio or not (writefile and isfile and readfile) then return end
 
-		local autoloadPath = MacLib.Folder .. "/settings/autoload.txt"
+		local gameFolder = GetGameFolder()
+		local autoloadPath = gameFolder .. "/autoload.txt"
+
 		if not isfile(autoloadPath) then
-			if not isfolder(MacLib.Folder .. "/settings") then
-				makefolder(MacLib.Folder .. "/settings")
-			end
 			writefile(autoloadPath, "default")
 		end
 
@@ -5679,7 +5703,8 @@ function MacLib:Window(Settings)
 			return false, "Please select a config file."
 		end
 
-		local file = MacLib.Folder .. "/settings/" .. Path .. ".json"
+		local gameFolder = GetGameFolder()
+		local file = gameFolder .. "/" .. Path .. ".json"
 		if not isfile(file) then return false, "Invalid file" end
 
 		local success, decoded = pcall(HttpService.JSONDecode, HttpService, readfile(file))
@@ -5687,8 +5712,8 @@ function MacLib:Window(Settings)
 
 		for _, option in next, decoded.objects do
 			if ClassParser[option.type] then
-				task.spawn(function() 
-					ClassParser[option.type].Load(option.flag, option) 
+				task.spawn(function()
+					ClassParser[option.type].Load(option.flag, option)
 				end)
 			end
 		end
@@ -5699,7 +5724,8 @@ function MacLib:Window(Settings)
 	function MacLib:RefreshConfigList()
 		if isStudio or not (isfolder and listfiles) then return "Config system unavailable." end
 
-		local list = (isfolder(MacLib.Folder) and isfolder(MacLib.Folder .. "/settings")) and listfiles(MacLib.Folder .. "/settings") or {}
+		local gameFolder = GetGameFolder()
+		local list = isfolder(gameFolder) and listfiles(gameFolder) or {}
 
 		local out = {}
 		for i = 1, #list do
