@@ -1885,7 +1885,7 @@ function MacLib:Window(Settings)
 					sliderName.TextTransparency = 0.5
 					sliderName.TextTruncate = Enum.TextTruncate.AtEnd
 					sliderName.TextXAlignment = Enum.TextXAlignment.Left
-					sliderName.TextYAlignment = Enum.TextYAlignment.Top
+					sliderName.TextYAlignment = Enum.TextYAlignment.Center
 					sliderName.AutomaticSize = Enum.AutomaticSize.Y
 					sliderName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					sliderName.BackgroundTransparency = 1
@@ -1898,6 +1898,7 @@ function MacLib:Window(Settings)
 					local sliderNameUIPadding = Instance.new("UIPadding")
 					sliderNameUIPadding.Name = "SliderNameUIPadding"
 					sliderNameUIPadding.PaddingLeft = UDim.new(0, 3)
+					sliderNameUIPadding.PaddingTop = UDim.new(0, 5)
 					sliderNameUIPadding.Parent = sliderName
 
 					local sliderElements = Instance.new("Frame")
