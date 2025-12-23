@@ -6026,19 +6026,18 @@ function MacLib:Demo()
 		Text = "UI Settings"
 	})
 
-	settingsSection:Slider({
+	local UiSizeSlider = settingsSection:Slider({
 		Name = "UI Size",
-		Default = 1,
+		Default = 0.75,
 		Minimum = 0.5,
 		Maximum = 2,
 		DisplayMethod = "Value",
 		Precision = 2,
 		Callback = function(Value)
 			Window:SetScale(Value)
+			_G.ScaleValue = Value
 		end
 	}, "UISize")
-
-	tabs.Settings:InsertConfigSection("Left")
 
 	Window.onUnloaded(function()
 		print("Unloaded!")
