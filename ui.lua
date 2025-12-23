@@ -27,6 +27,7 @@ local tabs = {}
 local currentTabInstance = nil
 local tabIndex = 0
 local unloaded = false
+local activeMinimizerGui = nil
 
 local assets = {
 	interFont = "rbxassetid://12187365364",
@@ -5373,7 +5374,11 @@ function MacLib:Window(Settings)
 
 	function WindowFunctions:Unload()
 		if onUnloadCallback then
-			onUnloadCallback()  
+			onUnloadCallback()
+		end
+		if activeMinimizerGui then
+			activeMinimizerGui:Destroy()
+			activeMinimizerGui = nil
 		end
 		macLib:Destroy()
 		unloaded = true
@@ -5755,6 +5760,10 @@ function MacLib:Window(Settings)
 	function WindowFunctions:CreateMinimizer(Config)
 		Config = Config or {}
 
+		if activeMinimizerGui then
+			activeMinimizerGui:Destroy()
+		end
+
 		local minimizerGui = Instance.new("ScreenGui")
 		minimizerGui.Name = "MacLibMinimizer"
 		minimizerGui.ResetOnSpawn = false
@@ -5813,14 +5822,17 @@ function MacLib:Window(Settings)
 		UserInputService.InputChanged:Connect(function(input)
 			if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
 				local delta = input.Position - dragStart
+				local newX = startPos.X.Offset + delta.X
 				local newY = startPos.Y.Offset + delta.Y
 
 				local viewportSize = workspace.CurrentCamera.ViewportSize
-				local buttonSize = holder.AbsoluteSize.Y
+				local buttonSizeX = holder.AbsoluteSize.X
+				local buttonSizeY = holder.AbsoluteSize.Y
 
-				newY = math.clamp(newY, 0, viewportSize.Y - buttonSize)
+				newX = math.clamp(newX, -buttonSizeX, viewportSize.X)
+				newY = math.clamp(newY, 0, viewportSize.Y - buttonSizeY)
 
-				holder.Position = UDim2.new(1, startPos.X.Offset, 0, newY)
+				holder.Position = UDim2.new(startPos.X.Scale, newX, startPos.Y.Scale, newY)
 			end
 		end)
 
@@ -5868,8 +5880,10 @@ function MacLib:Window(Settings)
 
 		function MinimizerFunctions:Destroy()
 			minimizerGui:Destroy()
+			activeMinimizerGui = nil
 		end
 
+		activeMinimizerGui = minimizerGui
 		return MinimizerFunctions
 	end
 
