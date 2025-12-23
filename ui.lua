@@ -1898,7 +1898,7 @@ function MacLib:Window(Settings)
 					local sliderNameUIPadding = Instance.new("UIPadding")
 					sliderNameUIPadding.Name = "SliderNameUIPadding"
 					sliderNameUIPadding.PaddingLeft = UDim.new(0, 3)
-					sliderNameUIPadding.PaddingTop = UDim.new(0, 5)
+					sliderNameUIPadding.PaddingTop = UDim.new(0, 20)
 					sliderNameUIPadding.Parent = sliderName
 
 					local sliderElements = Instance.new("Frame")
